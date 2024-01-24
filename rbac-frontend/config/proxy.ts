@@ -1,3 +1,11 @@
+/*
+ * @Author: jack ning github@bytedesk.com
+ * @Date: 2024-01-24 16:20:32
+ * @LastEditors: jack ning github@bytedesk.com
+ * @LastEditTime: 2024-01-24 16:56:57
+ * @FilePath: /rbac/rbac-frontend/config/proxy.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /**
  * @name 代理的配置
  * @see 在生产环境 代理是无法生效的，所以这里没有生产环境的配置
@@ -16,7 +24,7 @@ export default {
     '/api/': {
       // 要代理的地址
       // target: 'https://preview.pro.ant.design',
-      target: 'http://localhost:8080',
+      target: 'http://localhost:9010',
       // 配置了这个可以从 http 代理到 https
       // 依赖 origin 的功能可能需要这个，比如 cookie
       // changeOrigin: true,
