@@ -72,7 +72,10 @@ public class SpringSecurityConfig {
                 // All other endpoints require authentication to access.
                 .antMatchers("/**").authenticated()
                 // Configure authentication error handler.
-                .and().exceptionHandling().authenticationEntryPoint(new MyEntryPoint()).accessDeniedHandler(new MyDeniedHandler());
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(new MyEntryPoint())
+                .accessDeniedHandler(new MyDeniedHandler());
         //Disable session
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // Replace the default authentication filter with custom ones.

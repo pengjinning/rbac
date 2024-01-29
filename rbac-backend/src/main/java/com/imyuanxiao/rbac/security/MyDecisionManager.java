@@ -19,6 +19,7 @@ import java.util.Objects;
 @Slf4j
 @Component
 public class MyDecisionManager implements AccessDecisionManager {
+    
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) {
         // 如果授权规则为空则代表此URL无需授权就能访问

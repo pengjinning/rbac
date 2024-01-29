@@ -15,7 +15,7 @@ import com.imyuanxiao.rbac.service.RoleService;
 import com.imyuanxiao.rbac.util.ValidationGroups;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
+// import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +26,11 @@ import java.util.List;
 import static com.imyuanxiao.rbac.util.CommonConst.ACTION_SUCCESSFUL;
 
 /**
- * @description  Role Management Interface
+ * @description Role Management Interface
  * @author: <a href="https://github.com/imyuanxiao">imyuanxiao</a>
  * @date: 2023/6/7 23:17
  **/
-@Slf4j
+// @Slf4j
 @RestController
 @RequestMapping("/role")
 @Auth(id = 3000, name = "角色管理")

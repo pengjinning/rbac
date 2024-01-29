@@ -1,3 +1,17 @@
+/*
+ * @Author: jackning 270580156@qq.com
+ * @Date: 2024-01-24 16:20:32
+ * @LastEditors: jackning 270580156@qq.com
+ * @LastEditTime: 2024-01-26 16:45:11
+ * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
+ *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
+ *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
+ *  仅支持企业内部员工自用，严禁用于销售、二次销售或者部署SaaS方式销售 
+ *  Business Source License 1.1: https://github.com/Bytedesk/bytedesk/blob/main/LICENSE 
+ *  contact: 270580156@qq.com 
+ *  技术/商务联系：270580156@qq.com
+ * Copyright (c) 2024 by bytedesk.com, All Rights Reserved. 
+ */
 package com.imyuanxiao.rbac.security;
 
 import cn.hutool.core.util.StrUtil;
@@ -22,12 +36,12 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @description  Authentication filter
+ * @description Authentication filter
  * @author: <a href="https://github.com/imyuanxiao">imyuanxiao</a>
  **/
 @Slf4j
 @Component
-public class LoginFilter  extends OncePerRequestFilter {
+public class LoginFilter extends OncePerRequestFilter {
 
     @Autowired
     private RedisUserServiceImpl redisUserService;
@@ -49,6 +63,7 @@ public class LoginFilter  extends OncePerRequestFilter {
             return;
         }
         jwt = authHeader.substring(7);
+        log.info("jwt {}", jwt);
 
         // 提取用户名，查询数据库
         // 在提取时会验证token是否有效
@@ -56,17 +71,18 @@ public class LoginFilter  extends OncePerRequestFilter {
         String userId = JwtManager.extractUserID(jwt);
 
         // username有效，并且上下文对象中没有配置用户
-        if (StrUtil.isNotBlank(username) && StrUtil.isNotBlank(userId) && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (StrUtil.isNotBlank(username) && StrUtil.isNotBlank(userId)
+                && SecurityContextHolder.getContext().getAuthentication() == null) {
             // Get user info from redis
             Map<Object, Object> userMap = redisUtil.getUserMap(userId);
             // 如果userMap不存在，说明该token登录信息已失效
-            if(userMap.isEmpty()){
+            if (userMap.isEmpty()) {
                 filterChain.doFilter(request, response);
                 return;
             }
             // 如果userMap存在，但是token不一致，说明被顶号登录
-            if(!userMap.get("token").equals(authHeader)){
-                request.setAttribute("errorMessage","账户异地登录!");
+            if (!userMap.get("token").equals(authHeader)) {
+                request.setAttribute("errorMessage", "账户异地登录!");
                 throw new AccountTakeoverException("账户异地登录");
             }
 
@@ -76,12 +92,10 @@ public class LoginFilter  extends OncePerRequestFilter {
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                     userDetails,
                     null,
-                    userDetails.getAuthorities()
-            );
+                    userDetails.getAuthorities());
             // 封装 HTTP 请求的详细信息的对象，包含了请求的 IP 地址、请求的 Session ID、请求的 User Agent 等
             authToken.setDetails(
-                    new WebAuthenticationDetailsSource().buildDetails(request)
-            );
+                    new WebAuthenticationDetailsSource().buildDetails(request));
             // 将 authToken 设置到当前线程的 SecurityContext 中，表示用户已经通过身份认证，并且具有相应的授权信息
             SecurityContextHolder.getContext().setAuthentication(authToken);
         }

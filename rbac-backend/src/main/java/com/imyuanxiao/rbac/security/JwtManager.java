@@ -62,6 +62,7 @@ public final class JwtManager {
      **/
     public static void verifyToken(String token) {
         // 解析失败了会抛出异常，所以要捕捉一下。token过期、token非法都会导致解析失败
+        log.info("token {}", token);
 
         //验证签名
         boolean verify = JWTUtil.verify(token, JWTSignerUtil.hs256(secretKeyBytes));

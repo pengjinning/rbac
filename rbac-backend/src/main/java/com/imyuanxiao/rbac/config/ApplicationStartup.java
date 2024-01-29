@@ -19,18 +19,20 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @description  Scan @auth on interface and add permissions to database.
+ * @description Scan @auth on interface and add permissions to database.
  * @author: <a href="https://github.com/imyuanxiao">imyuanxiao</a>
  **/
 @Component
 public class ApplicationStartup implements ApplicationRunner {
+
     @Autowired
     private RequestMappingInfoHandlerMapping requestMappingInfoHandlerMapping;
+
     @Autowired
     private PermissionService permissionService;
 
     @Override
-    public void run(ApplicationArguments args){
+    public void run(ApplicationArguments args) {
 
         // 扫描并获取所有需要权限处理的接口资源
         List<Permission> list = getAuthPermissions();
@@ -55,6 +57,7 @@ public class ApplicationStartup implements ApplicationRunner {
         List<Permission> list = new LinkedList<>();
         // 拿到所有接口信息，并开始遍历
         Map<RequestMappingInfo, HandlerMethod> handlerMethods = requestMappingInfoHandlerMapping.getHandlerMethods();
+        // 
         handlerMethods.forEach((info, handlerMethod) -> {
             // 拿到类(模块)上的权限注解
             Auth moduleAuth = handlerMethod.getBeanType().getAnnotation(Auth.class);
@@ -67,7 +70,7 @@ public class ApplicationStartup implements ApplicationRunner {
             }
             Permission permissionOnClass = new Permission()
                     .setType(0).setPermName(moduleAuth.name()).setId(moduleAuth.id());
-            if(!list.contains(permissionOnClass)){
+            if (!list.contains(permissionOnClass)) {
                 list.add(permissionOnClass);
             }
 

@@ -2,12 +2,10 @@ package com.imyuanxiao.rbac.controller.api;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.core.toolkit.ArrayUtils;
-import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import com.imyuanxiao.rbac.annotation.Auth;
@@ -18,14 +16,13 @@ import com.imyuanxiao.rbac.model.vo.LoginHistoryPageVO;
 import com.imyuanxiao.rbac.model.entity.User;
 import com.imyuanxiao.rbac.model.vo.UserPageVO;
 import com.imyuanxiao.rbac.service.PermissionService;
-import com.imyuanxiao.rbac.service.UserProfileService;
 import com.imyuanxiao.rbac.service.UserService;
 import com.imyuanxiao.rbac.util.SecurityContextUtil;
 import com.imyuanxiao.rbac.util.ValidationGroups;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import lombok.extern.slf4j.Slf4j;
+// import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +36,7 @@ import static com.imyuanxiao.rbac.util.CommonConst.ACTION_SUCCESSFUL;
  * @description  User Management Interface
  * @author: <a href="https://github.com/imyuanxiao">imyuanxiao</a>
  **/
-@Slf4j
+// @Slf4j
 @RestController
 @RequestMapping("/user")
 @Auth(id = 1000, name = "账户管理")

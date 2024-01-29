@@ -1,15 +1,25 @@
+/*
+ * @Author: jackning 270580156@qq.com
+ * @Date: 2024-01-24 16:20:32
+ * @LastEditors: jackning 270580156@qq.com
+ * @LastEditTime: 2024-01-26 16:42:04
+ * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
+ *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
+ *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
+ *  仅支持企业内部员工自用，严禁用于销售、二次销售或者部署SaaS方式销售 
+ *  Business Source License 1.1: https://github.com/Bytedesk/bytedesk/blob/main/LICENSE 
+ *  contact: 270580156@qq.com 
+ *  技术/商务联系：270580156@qq.com
+ * Copyright (c) 2024 by bytedesk.com, All Rights Reserved. 
+ */
 package com.imyuanxiao.rbac.model.param;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.imyuanxiao.rbac.util.ValidationGroups;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 
 @Data
-public class UserProfileParam{
+public class UserProfileParam {
 
     private String userPhone;
 
@@ -18,6 +28,6 @@ public class UserProfileParam{
     @NotBlank(message = "Nickname is required.")
     private String nickName;
 
-//    private String avatar;
+    // private String avatar;
 
 }
