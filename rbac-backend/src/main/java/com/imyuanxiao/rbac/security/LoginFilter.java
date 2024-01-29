@@ -1,8 +1,8 @@
 /*
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-01-24 16:20:32
- * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-01-26 16:45:11
+ * @LastEditors: jack ning github@bytedesk.com
+ * @LastEditTime: 2024-01-29 14:44:39
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -73,6 +73,7 @@ public class LoginFilter extends OncePerRequestFilter {
         // username有效，并且上下文对象中没有配置用户
         if (StrUtil.isNotBlank(username) && StrUtil.isNotBlank(userId)
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
+            
             // Get user info from redis
             Map<Object, Object> userMap = redisUtil.getUserMap(userId);
             // 如果userMap不存在，说明该token登录信息已失效
