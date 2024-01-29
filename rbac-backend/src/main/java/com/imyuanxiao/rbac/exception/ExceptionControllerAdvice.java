@@ -1,8 +1,8 @@
 /*
  * @Author: jackning 270580156@qq.com
  * @Date: 2024-01-24 16:20:32
- * @LastEditors: jackning 270580156@qq.com
- * @LastEditTime: 2024-01-26 19:57:08
+ * @LastEditors: jack ning github@bytedesk.com
+ * @LastEditTime: 2024-01-29 14:23:14
  * @Description: bytedesk.com https://github.com/Bytedesk/bytedesk
  *   Please be aware of the BSL license restrictions before installing Bytedesk IM – 
  *  selling, reselling, or hosting Bytedesk IM as a service is a breach of the terms and automatically terminates your rights under the license. 
@@ -17,7 +17,7 @@ package com.imyuanxiao.rbac.exception;
 import com.imyuanxiao.rbac.annotation.ExceptionCode;
 import com.imyuanxiao.rbac.enums.ResultCode;
 import com.imyuanxiao.rbac.model.vo.ResultVO;
-import lombok.extern.slf4j.Slf4j;
+// import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -28,7 +28,7 @@ import java.lang.reflect.Field;
  * @description Global exception handler
  * @author: <a href="https://github.com/imyuanxiao">imyuanxiao</a>
  **/
-@Slf4j
+// @Slf4j
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
 
